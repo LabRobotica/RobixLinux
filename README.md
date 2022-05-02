@@ -14,25 +14,19 @@ O script resolve essas questões automaticamente para você, além de criar o at
 
 ## Instalação automática (script assistente)
 
-Baixe e execute o script assistente de instação com os comandos abaixos:
+Execute o script assistente de instação com o comando abaixo:
 
 ```bash
-wget -c https://raw.githubusercontent.com/LabRobotica/RobixLinux/main/robix-debian.sh
-chmod +x robix-debian.sh
-sudo ./robix-debian.sh
-rm robix-debian.sh
+curl https://raw.githubusercontent.com/LabRobotica/RobixLinux/main/robix-debian.sh | sudo bash
 ```
 
 Leia atentamente as mensagens do terminal a procura de algum erro, ou para seguir corretamente as instruções.
 
-
-OBS: Caso ```wget``` não esteja instalado, execute o comando:
+OBS: Caso o ```cURL``` não esteja instalado, execute o comando:
 
 ```bash
-sudo apt install wget
+sudo apt install curl
 ```
-
-Você irá precisar do ```wget``` durante a execução do script de qualquer forma.
 
 ## Instalação manual (passo a passo)
 
@@ -79,6 +73,12 @@ Uma solução é baixar e instalar manualmente esta biblioteca através do coman
 ```bash
 wget -c https://raw.githubusercontent.com/LabRobotica/RobixLinux/main/bin/libstdc++2.10-glibc2.2_2.95.4-27_i386.deb
 sudo apt install ./libstdc++2.10-glibc2.2_2.95.4-27_i386.deb
+```
+
+OBS: Caso o ```wget``` não esteja instalado, execute o comando:
+
+```bash
+sudo apt install wget
 ```
 
 ### Instalar Robix Usbor
