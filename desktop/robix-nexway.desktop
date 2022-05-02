@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Robix NexWay
+Comment=Robix NexWay se comunica com seu Robix por intermedio do Nexus.
+Exec=UsborNexway
+Icon=/opt/Robix/Usbor/nexway.png
+Type=Application
+Categories=Development;

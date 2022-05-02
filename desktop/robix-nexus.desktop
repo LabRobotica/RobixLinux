@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Robix Nexus
+Comment=Robix Nexus é uma ponte de comunicação entre seu Robix e o programa Nexway.
+Exec=sh -c "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY sh -c 'mount --bind /dev/bus /proc/bus ; UsborNexus'"
+Icon=/opt/Robix/Usbor/nexus.png
+Type=Application
+Categories=Development;
