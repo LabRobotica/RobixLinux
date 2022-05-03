@@ -55,17 +55,19 @@ chmod +x install.sh
 bash install.sh
 popd
 echo "procusb" | sudo tee /etc/modules-load.d/procusb.conf
+sudo chmod 644 /etc/modules-load.d/procusb.conf
 rm -rf kernel-module kernel-module.tgz
 sudo modprobe procusb
 echo ""
 echo "---> Configurando USB como acessível por usuários comuns <---"
 echo ""
 echo 'ACTION=="add", SUBSYSTEMS=="usb", GROUP="wheel", MODE="0660"' | sudo tee /etc/udev/rules.d/robix.rules
+sudo chmod 644 /etc/udev/rules.d/robix.rules
 sudo systemctl restart systemd-udevd
 echo ""
 echo "---> Espelhando /dev/bus/usb em /proc/bus/usb <---"
 echo ""
-append_once "/dev/bus/usb\t/proc/bus/usb\tbind\tbind" /etc/fstab
+append_once "/dev/bus/usb\t/proc/bus/usb\tbind\tnoauto,nofail,x-systemd.automount,bind" /etc/fstab
 sudo systemctl daemon-reload
 sudo mount /proc/bus/usb
 
