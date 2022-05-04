@@ -26,7 +26,14 @@ echo ""
 echo "---> Atualizando o sistema operacional <---"
 echo ""
 sudo apt upgrade -y
-sudo apt install -y dmks wget
+echo ""
+echo "---> Instalando wget para fazer download de arquivos <---"
+echo ""
+sudo apt install wget -y
+echo ""
+echo "---> Instalando dkms para gerenciar os modulos do kernel <---"
+echo ""
+sudo apt install dkms -y
 echo ""
 echo "---> Instalando dependência openjdk-11-jre (32 e 64 bits) <---"
 echo ""
