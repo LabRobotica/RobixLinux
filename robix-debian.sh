@@ -49,38 +49,6 @@ rm ./libstdc++2.10-glibc2.2_2.95.4-27_i386.deb
 clear
 echo "################################################################################"
 echo "###                                                                          ###"
-echo "###                  Aplicando recursos de compatibilidade                   ###"
-echo "###                                                                          ###"
-echo "################################################################################"
-echo ""
-echo "---> Instalando módulo DKMS (cria diretório /proc/bus/usb) <---"
-echo ""
-wget -c https://raw.githubusercontent.com/LabRobotica/RobixLinux/main/bin/kernel-module.tgz
-tar -xf kernel-module.tgz
-pushd kernel-module
-chmod +x install.sh
-bash install.sh
-popd
-echo "procusb" | sudo tee /etc/modules-load.d/procusb.conf
-sudo chmod 644 /etc/modules-load.d/procusb.conf
-rm -rf kernel-module kernel-module.tgz
-sudo modprobe procusb
-echo ""
-echo "---> Configurando USB como acessível por usuários comuns <---"
-echo ""
-echo 'ACTION=="add", SUBSYSTEMS=="usb", GROUP="wheel", MODE="0660"' | sudo tee /etc/udev/rules.d/robix.rules
-sudo chmod 644 /etc/udev/rules.d/robix.rules
-sudo systemctl restart systemd-udevd
-echo ""
-echo "---> Espelhando /dev/bus/usb em /proc/bus/usb <---"
-echo ""
-append_once "/dev/bus/usb\t/proc/bus/usb\tbind\tnoauto,nofail,x-systemd.automount,bind" /etc/fstab
-sudo systemctl daemon-reload
-sudo mount /proc/bus/usb
-
-clear
-echo "################################################################################"
-echo "###                                                                          ###"
 echo "###                     Instalando o Usbor (Robix)                           ###"
 echo "###                                                                          ###"
 echo "################################################################################"
